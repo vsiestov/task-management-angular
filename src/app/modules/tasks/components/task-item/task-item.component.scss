@@ -1,0 +1,26 @@
+@import "../../../../../styles/base/var";
+
+.tasks__item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 0 15px;
+}
+
+.tasks__description {
+    color: $color1;
+    font-family: $font-primary;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.tasks__due {
+    color: $color2;
+    font-family: $font-secondary;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.tasks__controls {
+    text-align: right;
+}

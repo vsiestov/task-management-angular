@@ -1,0 +1,55 @@
+@function em($px, $base: $font-size) {
+    @return ($px / $base) * 1em;
+}
+
+@function rem($px, $base: $root-font-size) {
+    @return ($px / $base) * 1rem;
+}
+
+@function vw($px, $base: $view-port-width) {
+    @return ($px / $base) * 1vw;
+}
+
+@function vh($px, $base: $view-port-height) {
+    @return ($px / $base) * 1vh;
+}
+
+@mixin breakpoint($point) {
+    @if $point == landscape {
+        @media (min-aspect-ratio: 13/9) {
+            @content;
+        }
+    }
+    @else if $point == portrait {
+        @media (max-aspect-ratio: 13/9) {
+            @content;
+        }
+    }
+    @else if $point == tablet {
+        @media (min-width: 720px) {
+            @content;
+        }
+    }
+    @else if $point == desktop {
+        @media (min-width: 980px) {
+            @content;
+        }
+    }
+    @else if ($point == retina) {
+
+        @media (-webkit-min-device-pixel-ratio: 2), (-moz-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 2/1), (min-device-pixel-ratio: 2) {
+            @content ;
+        }
+
+    }
+    @else if ($point == ios) {
+        @media only screen and (max-device-width: 1024px) and (min-device-height: 768px),
+        only screen and (min-device-width: 375px) and (max-device-width: 667px),
+        only screen and (min-device-width: 414px) and (max-device-width: 736px),
+        only screen and (min-device-width: 320px) and (max-device-width: 568px),
+        only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+            @content;
+        }
+    }
+
+}

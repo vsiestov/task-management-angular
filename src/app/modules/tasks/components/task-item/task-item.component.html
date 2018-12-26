@@ -1,0 +1,18 @@
+<li class="tasks__item">
+  <div class="tasks__info">
+    <div class="tasks__description">
+      Description: {{ item.description }}
+    </div>
+    <div class="tasks__due">
+      Due date: {{ item.due | date: 'dd.MM.yyy' }}
+    </div>
+  </div>
+  <div class="tasks__controls">
+    <button class="button blue"  (click)="changed.emit(item)">
+      <span>Change</span>
+    </button>
+    <button class="button orange" (click)="removed.emit(item)">
+      <span>Delete</span>
+    </button>
+  </div>
+</li>

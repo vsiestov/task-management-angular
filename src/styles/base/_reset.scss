@@ -1,0 +1,268 @@
+@charset "UTF-8";
+
+/*
+	Description: Reset style
+	Date: 00-00-0000
+	Time: 00-00
+	Author://
+*/
+
+/* ------------------------------------------------- reset.css ------------------------------------------------------ */
+html, body, div, span, h1, h2, h3, h4, h5, h6, p, blockquote, em, img, q, strong, sub, sup, b, u, i,  dl, dt, dd, ol,
+ul, li, fieldset, form, label, table, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figcaption,
+figure, footer, header, menu, nav, section, summary, time, mark, audio, video, address, select, textarea {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    vertical-align: baseline;
+    font-size: 100%;
+}
+
+audio,
+canvas,
+progress,
+video {
+    display: inline-block;
+    vertical-align: baseline;
+}
+
+b,
+strong {
+    font-weight: bold;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: normal;
+}
+
+a {
+    margin: 0;
+    padding: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    outline: none;
+    background-color: transparent;
+
+    &:hover,
+    &:active {
+        outline: none;
+    }
+
+    @extend %default-link;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+td, td img {
+    vertical-align: top;
+}
+
+address, article, aside, blockquote, center, dir, div, dd, details, dl, dt, fieldset, figcaption, figure, form, footer, frameset, h1, h2, h3, h4, h5, h6, hr, header, hgroup, isindex, main, menu, nav, noframes, noscript, ol, p, pre, section, summary, ul {
+    display: block;
+}
+
+nav {
+    ul {
+        list-style: none;
+    }
+}
+
+ul {
+    list-style: none;
+}
+
+li {
+    list-style-type: none;
+}
+
+html {
+    font-size: 100%;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    //text-rendering: optimizelegibility;//
+}
+
+html,
+body {
+    height: 100%;
+}
+
+%padding-margin-border {
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+
+%reset-appearance {
+    appearance: none;
+}
+
+%outline-none {
+    outline: none;
+}
+
+%box-sizing {
+    box-sizing: border-box;
+}
+
+%type-button {
+    cursor: pointer;
+
+    &[disabled] {
+        cursor: default;
+    }
+}
+
+select {
+    @extend %input-reset;
+}
+
+button {
+    @extend %type-button;
+    @extend %input-reset;
+
+    &::-moz-focus-inner {
+        @extend %padding-margin-border;
+    }
+}
+
+textarea {
+    @extend %input-reset;
+    overflow: auto;
+    resize: none;
+}
+
+sup {
+    vertical-align: super;
+    font-size: smaller;
+}
+
+img,
+video {
+    max-width: 100%;
+    height: auto;
+    border: 0;
+}
+
+video {
+    max-height: 100%;
+}
+
+* {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-tap-highlight-color: trasparent;
+    @extend %box-sizing;
+}
+
+input, select, textarea, button {
+    margin: 0;
+    padding: 0;
+    font-size: 100%;
+}
+
+%placeholder-color {
+}
+
+%input-reset {
+    border: none;
+    box-shadow: none;
+    border-radius: 0;
+    background: none;
+    text-transform: none;
+    @extend %outline-none;
+
+    &:active,
+    &:focus {
+        @extend %outline-none;
+    }
+}
+
+input {
+    @extend %input-reset;
+    @extend %reset-appearance;
+
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+        @extend %reset-appearance;
+        margin: 0;
+    }
+
+    &[type="date"] {
+        &::-webkit-inner-spin-button{
+            @extend %reset-appearance;
+        }
+    }
+
+    &[type="search"] {
+        @extend %reset-appearance;
+
+        &:focus {
+            @extend %reset-appearance;
+        }
+
+        &::-webkit-search-cancel-button {
+            @extend %reset-appearance;
+        }
+    }
+
+    &[type="submit"],
+    &[type="reset"],
+    &[type="button"],
+    &[type="file"] {
+        @extend %type-button;
+
+        > input {
+            &[type="button"] {
+                &::-moz-focus-inner {
+                    @extend %padding-margin-border;
+                }
+            }
+        }
+
+        &::-moz-focus-inner {
+            @extend %padding-margin-border;
+        }
+
+    }
+
+    &::-webkit-input-placeholder {
+    }
+
+    &:-ms-input-placeholder {
+    }
+
+    &::-moz-placeholder {
+    }
+
+    &.placeholder {
+    }
+
+    &:-webkit-autofill {
+        color: transparent !important;
+        background-color: transparent !important;
+        box-shadow: none;
+    }
+
+    &:valid,
+    &:invalid {
+        box-shadow: none;
+        @extend %outline-none;
+    }
+
+    &::-webkit-calendar-picker-indicator {
+        @extend %reset-appearance;
+        display: none;
+    }
+
+    &::-ms-clear {
+        display: none;
+    }
+}
+
+/* -------------------------------------------------/reset.css ------------------------------------------------------ */

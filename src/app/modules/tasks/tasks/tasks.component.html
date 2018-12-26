@@ -1,0 +1,65 @@
+<div class="layout">
+    <div class="tasks__header">
+        <h1>Your tasks</h1>
+
+        <button class="tasks__action button blue" (click)="onCreateTask()">
+            <span>Create task</span>
+        </button>
+    </div>
+
+    <ng-container *ngIf="$tasks | async as tasks">
+        <div class="tasks__form" *ngIf="isFormVisible">
+            <div class="align-center">
+                <form (submit)="onSubmit($event)" novalidate class="form form__inside" [formGroup]="form">
+                    <div class="input__wrap">
+                        <textarea formControlName="description" class="input" placeholder="Description"></textarea>
+                        <div role="alert" class="alert" *ngIf="isInvalid(form.controls.description)">
+                            <ng-container *ngIf="form.controls.description.errors.required">This is required field</ng-container>
+                            <ng-container *ngIf="form.controls.description.errors.minlength">Must be at least 10 characters</ng-container>
+                        </div>
+                    </div>
+
+                    <div class="input__wrap">
+                        <input formControlName="due" class="input" type="datetime-local" placeholder="Due date"/>
+                        <div role="alert" class="alert" *ngIf="isInvalid(form.controls.due)">
+                            This field is required
+                        </div>
+                    </div>
+
+                    <div class="input__controls">
+                        <button class="button" type="button" (click)="onCancelTask()">
+                            <span>Cancel</span>
+                        </button>
+
+                        <button class="button blue" type="submit" formnovalidate>
+                            <span *ngIf="form.value._id; else elseButton">Update task</span>
+                            <ng-template #elseButton>
+                                <span>Add task</span>
+                            </ng-template>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div *ngIf="tasks.length; else emptyTasks">
+            <app-search (changed)="search = $event"></app-search>
+
+            <ul class="tasks__list">
+                <app-task-item
+                    [item]="item"
+                    *ngFor="let item of tasks | filter: search; trackBy: trackById"
+                    (changed)="onChangeTask($event)"
+                    (removed)="onDeleteTask($event)"
+                >
+                </app-task-item>
+            </ul>
+        </div>
+        <ng-template #emptyTasks>
+            <div class="tasks__placeholder">
+                You have not tasks yet
+            </div>
+        </ng-template>
+    </ng-container>
+
+</div>

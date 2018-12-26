@@ -1,0 +1,26 @@
+<div class="layout">
+  <div class="align-center">
+    <form (submit)="onSubmit($event)" class="form" [formGroup]="form">
+      <div class="input__wrap">
+        <input type="email" class="input" formControlName="email" placeholder="Email">
+        <div role="alert" class="alert" *ngIf="isInvalid(form.controls.email)">
+          <ng-container *ngIf="form.controls.email.errors.required">This field is required</ng-container>
+          <ng-container *ngIf="form.controls.email.errors.email">Email is not correct</ng-container>
+        </div>
+      </div>
+
+      <div class="input__wrap">
+        <input type="password" class="input" formControlName="password" placeholder="Password">
+        <div role="alert" class="alert" *ngIf="isInvalid(form.controls.password)">
+          <ng-container *ngIf="form.controls.password.errors.required">This field is required</ng-container>
+          <ng-container *ngIf="form.controls.password.errors.minlength">Password must be at least 6 characters</ng-container>
+        </div>
+      </div>
+
+      <div class="input__controls">
+        <a routerLink="/sign-up" class="link">Sign up</a>
+        <button class="button" type="submit">Submit</button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,209 @@
+@import "functions";
+
+//100 = thin
+//200 = extra-light
+//300 = light
+//400 = normal, book
+//500 = medium
+//600 = semi-bold
+//700 = bold
+//800 = heavy
+//900 = black
+
+@font-face {
+    font-family: 'PF Agora Slab Pro';
+    src: url('./assets/fonts/PFAgoraSlabPro/PFAgoraSlabPro-Regular.woff2') format('woff2'),
+         url('./assets/fonts/PFAgoraSlabPro/PFAgoraSlabPro-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+%content-header {
+    font-weight: bold;
+}
+
+%content {
+    h1, h2, h3, h4, h5, h6 {
+        @extend %content-header;
+    }
+
+    h1 {
+        font-size: 40px;
+        margin: 0 0 20px;
+    }
+
+    h2 {
+        font-size: 24px;
+        margin: 0 0 43px;
+    }
+
+    h3 {
+        font-size: 18px;
+        margin: 0 0 10px;
+    }
+
+    h4 {
+        font-size: 16px;
+        margin: 0 0 10px;
+    }
+
+    h5 {
+        font-size: 14px;
+        margin: 0 0 10px;
+    }
+
+    h6 {
+        font-size: 12px;
+        margin: 0 0 10px;
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    p {
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 24px;
+        margin: 0 0 24px;
+    }
+
+    hr {
+        height: 1px;
+        border: none;
+        color: #aaa;
+        background: #aaa;
+        margin: 10px 0;
+        clear: both;
+    }
+
+    %ul {
+        margin: 0 0 24px;
+        ul, ol {
+        }
+    }
+
+    %li {
+        position: relative;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 18px;
+        padding: 0 0 0 31px;
+        margin: 0 0 18px;
+    }
+
+    ul {
+
+        @extend %ul;
+
+        li {
+            @extend %li;
+
+            &:before {
+                top: 7px;
+                left: 0;
+                position: absolute;
+                content: '';
+                width: 4px;
+                height: 4px;
+                background-color: #ED1D25;
+            }
+        }
+    }
+
+    ol {
+        @extend %ul;
+        counter-reset: point;
+
+        > li {
+            @extend %li;
+
+            position: relative;
+            counter-increment: point;
+
+            &:before {
+                font-size: 14px;
+                font-weight: 400;
+                content: counter(point)'. ';
+                position: absolute;
+                left: 0;
+                top: 0;
+            }
+        }
+    }
+
+    dl {
+        margin: 0 0 15px 0;
+    }
+
+    dt {
+        font-weight: bold;
+        margin: 0 0 2px;
+    }
+
+    dd {
+        margin: 0 0 2px;
+    }
+
+    table {
+        width: 100%;
+        text-align: left;
+    }
+
+    thead {
+        th, td {
+
+        }
+    }
+
+    tbody {
+        td {
+
+        }
+
+        tr {
+            &:nth-child(2n) {
+                background-color: #e5f2ed;
+            }
+
+            &:hover {
+                background-color: #d8e5e0;
+            }
+        }
+    }
+
+    th, td {
+        border: 1px solid #c3e2d6;
+        padding: 3px 8px;
+    }
+
+    tr {
+
+    }
+
+    blockquote {
+        background: #f9f9f9;
+        quotes: "\201C" "\201D" "\2018" "\2019";
+        padding: 20px;
+        margin: 0 0 20px;
+
+        &:before,
+        &:after {
+            color: #000;
+            font-size: 40px;
+        }
+
+        &:before {
+            content: open-quote;
+        }
+
+        &:after {
+            content: close-quote;
+        }
+
+        p {
+            display: inline;
+        }
+    }
+}

@@ -1,0 +1,23 @@
+@import "../../../../styles/base/var";
+
+.tasks__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 0 25px;
+
+    h1 {
+        color: $color1;
+        font-family: $font-primary;
+        font-size: 30px;
+        font-weight: 700;
+    }
+}
+
+.tasks__placeholder {
+    text-align: center;
+    color: $color6;
+    font-family: $font-secondary;
+    font-size: 24px;
+    font-weight: 400;
+}

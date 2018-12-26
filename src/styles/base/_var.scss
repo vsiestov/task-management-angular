@@ -1,0 +1,201 @@
+$view-port-width: 0 / 100 * 1px;
+$view-port-height: 557 / 100 * 1px;
+
+$font-secondary: 'Plumb', sans-serif;
+$font-primary: 'PF Agora Slab Pro', sans-serif;
+$font: $font-secondary;
+$input-font: $font;
+$font-size: 0;
+$input-size: 22px;
+$line-height: 1;
+
+$root-font-size: 16px;
+$header-height: 0;
+$menu-height: 0;
+$footer-height: 0;
+$sidebar-width: 0;
+$popup-width: 0;
+
+$min-width: 320px;
+$max-width: 760px;
+
+$color7: #fefefe;
+$color22: #ffd56b;
+$color9: #502e6e;
+$color: #ffffff;
+$color17: #225d1b;
+$color14: #000000;
+$color2: #3c1f57;
+$color3: #fcd472;
+$color12: #dc514c;
+$color21: #151922;
+$color18: #855e00;
+$color10: #074869;
+$color15: #8158a6;
+$color23: #e5ad21;
+$color16: #095b85;
+$color11: #ffb500;
+$color20: #7d2724;
+$color4: #59bb4e;
+$color19: #064f74;
+$color1: #1a1f2b;
+$color6: #242a38;
+$color8: #7b7e85;
+$color5: #8bd683;
+$color13: #0f90d2;
+
+$bg-color: $color6;
+
+$social-color-facebook: #3b5998;
+$social-color-dribbble: #ea4c89;
+$social-color-flickr: #ff0084;
+$social-color-google-plus: #dc4e41;
+$social-color-instagram: #517fa4;
+$social-color-linkedin: #0077b5;
+$social-color-medium: #00ab6b;
+$social-color-periscope: #40a4c4;
+$social-color-pinterest: #bd081c;
+$social-color-tumblr: #35465c;
+$social-color-twitter: #55acee;
+$social-color-vimeo: #1ab7ae;
+$social-color-youtube: #b31217;
+
+%clear-fix {
+    &:after {
+        content: '';
+        display: block;
+        height: 0;
+        clear: both;
+    }
+}
+
+%middle {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+%align-middle {
+    &:after {
+        content: '';
+        display: inline-block;
+        vertical-align: middle;
+        height: 100%;
+    }
+}
+
+%align-middle-before {
+    &:before {
+        content: '';
+        display: inline-block;
+        vertical-align: middle;
+        height: 100%;
+    }
+}
+
+%align-bottom {
+    &:after {
+        content: '';
+        display: inline-block;
+        vertical-align: bottom;
+        height: 100%;
+    }
+}
+
+%default-link {
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: none;
+    }
+
+}
+
+%button {
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    line-height: 1;
+    white-space: nowrap;
+    outline: none;
+    text-align: center;
+    user-select: none;
+    padding: 0 15px;
+
+    @extend %align-middle;
+
+    span {
+        @extend %middle;
+        color: white;
+    }
+}
+
+%focused {
+    box-shadow: 0 0 5px $color2;
+}
+
+%input {
+    height: 42px;
+    line-height: 1;
+    background-color: #fff;
+    color: $color;
+    padding: 0 15px;
+    width: 100%;
+    appearance: none;
+    font-size: 16px;
+
+    &::-webkit-input-placeholder {
+        color: $color1;
+    }
+
+    &:-ms-input-placeholder {
+        color: $color1;
+    }
+
+    &::-moz-placeholder {
+        color: $color1;
+    }
+
+    &.placeholder {
+        color: $color1;
+    }
+}
+
+%scroll-thumb {
+    background-color: $color5;
+    opacity: 0.8;
+}
+
+%custom-scroll {
+    &::-webkit-scrollbar {
+        width: 4px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        @extend %scroll-thumb;
+    }
+}
+
+@mixin custom-scroll {
+    &::-webkit-scrollbar {
+        width: 4px;
+        height: 4px;
+
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: #c6c5c7;
+        border-radius: 5px;
+    }
+}
+
+%text-center {
+    text-align: center;
+}
+
+%text-right {
+    text-align: right;
+}
+
+%text-left {
+    text-align: left;
+}
