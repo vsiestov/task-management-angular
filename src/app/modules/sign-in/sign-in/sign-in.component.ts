@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Store } from '@ngrx/store';
+import * as actions from '../../../ngrx/actions';
+import { IState } from '../../../interfaces/store.interfaces';
 
 @Component({
   selector: 'app-sign-in',
@@ -11,8 +14,13 @@ export class SignInComponent implements OnInit {
   form: FormGroup;
 
   constructor(
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private store: Store<IState>
   ) { }
+
+  get f() {
+    return this.form.controls;
+  }
 
   ngOnInit() {
     this.form = this.fb.group({
@@ -23,9 +31,15 @@ export class SignInComponent implements OnInit {
 
   onSubmit(event: Event) {
     event.stopPropagation();
+
+    if (this.form.invalid) {
+      return;
+    }
+
+    this.store.dispatch(new actions.SignInRequest(this.form.value));
   }
 
-  isInvalid(field: FormControl): boolean {
+  isInvalid(field: AbstractControl): boolean {
     return field.invalid && (field.dirty || field.touched);
   }
 }

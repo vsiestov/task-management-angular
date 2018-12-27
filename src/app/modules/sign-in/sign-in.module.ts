@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from '../shared.module';
 
 @NgModule({
   declarations: [
@@ -11,6 +12,7 @@ import { ReactiveFormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     ReactiveFormsModule,
+    SharedModule,
     RouterModule.forChild([
       {
         path: '',
@@ -18,6 +20,8 @@ import { ReactiveFormsModule } from '@angular/forms';
       }
     ])
   ],
-  exports: [RouterModule]
+  exports: [
+    RouterModule
+  ]
 })
 export class SignInModule { }

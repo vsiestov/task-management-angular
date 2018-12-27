@@ -7,7 +7,7 @@
         </button>
     </div>
 
-    <ng-container *ngIf="$tasks | async as tasks">
+    <ng-container *ngIf="tasks$ | async as tasks">
         <div class="tasks__form" *ngIf="isFormVisible">
             <div class="align-center">
                 <form (submit)="onSubmit($event)" novalidate class="form form__inside" [formGroup]="form">

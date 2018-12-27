@@ -1,21 +1,28 @@
-<header class="header">
+<ng-container *ngIf="app$ | async as app">
 
-  <ng-container *ngIf="user; else defaultLabel">
-    <div class="header__user">
-      {{ user.firstName }} {{ user.lastName }}
-    </div>
-    <button class="button" (click)="onLogout()">
-      <span>Logout</span>
-    </button>
-  </ng-container>
+  <header class="header">
 
-  <ng-template #defaultLabel>
-    <div class="header__user">
-      Task management
-    </div>
-  </ng-template>
-</header>
+    <ng-container *ngIf="app.user; else defaultLabel">
+      <div class="header__user">
+        {{ app.user.firstName }} {{ app.user.lastName }}
+      </div>
+      <button class="button" (click)="onLogout()">
+        <span>Logout</span>
+      </button>
+    </ng-container>
 
-<router-outlet></router-outlet>
+    <ng-template #defaultLabel>
+      <div class="header__user">
+        Task management
+      </div>
+    </ng-template>
 
-<app-loading *ngIf="isLoading"></app-loading>
+  </header>
+
+  <router-outlet></router-outlet>
+
+  <app-loading *ngIf="app.loading"></app-loading>
+
+  <app-notification *ngIf="app.errors.length" [errors]="app.errors"></app-notification>
+
+</ng-container>

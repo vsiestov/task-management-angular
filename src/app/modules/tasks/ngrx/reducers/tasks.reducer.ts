@@ -1,19 +1,33 @@
-const initialState = [
-  {
-    _id: '0',
-    description: 'Implement backend API',
-    due: '2018-12-26 17:12:00.000'
-  },
-  {
-    _id: '1',
-    description: 'Implement frontend using Angular',
-    due: '2018-12-26 17:12:00.000'
-  }
-];
+import * as types from '../types';
 
-export const taskReducer = (state = initialState, action) => {
+const initialState = [];
+
+export function taskReducer(state = initialState, action) {
   switch (action.type) {
+    case types.TasksTypes.responseList:
+      return action.payload;
+
+    case types.TasksTypes.responseUpdate:
+      const { payload } = action;
+      return state.map((item) => {
+        if (item._id === payload._id) {
+          return payload;
+        }
+
+        return item;
+      });
+
+    case types.TasksTypes.responseCreate:
+      return [...state, action.payload];
+
+    case types.TasksTypes.responseDelete:
+      const { _id } = action.payload;
+
+      return state.filter((item) => {
+        return item._id !== _id;
+      });
+
     default:
       return state;
   }
-};
+}
